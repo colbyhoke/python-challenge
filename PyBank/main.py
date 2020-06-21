@@ -82,7 +82,7 @@ print("Greatest Increase in Profits: " + str(max_month) + " (" + str(max_change_
 print("Greatest Decrease in Profits: " + str(min_month) + " (" + str(min_change_currency) + ")")
 
 #---------------------------------
-#Print analysis to terminal
+#Print analysis to text file
 #---------------------------------
 with open("analysis/financial_analysis.txt", "w") as text_file:
     print(f"Financial Analysis", file=text_file)
