@@ -38,7 +38,7 @@ with open(csvpath) as csvfile:
         #Guidance found here: https://kite.com/python/answers/how-to-format-currency-in-python
         total_currency = "${:,.2f}".format(revenue_total)
 
-        #Since the first month can't have a value for month-over-month change, we add revenue to total and move on
+        #Since the first month can't have a value for month-over-month change, we set the "previous" revenue and move on
         if first_month == True:
             previous_revenue = int(row[1])
             first_month=False
