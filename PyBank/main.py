@@ -1,11 +1,10 @@
 #Analyze bank records (csv) to calculate each of the following:
     #The total number of months included in the dataset
-    #The net total amount of "Profit/Losses" over the entire period
-    #The average of the changes in "Profit/Losses" over the entire period
-    #The greatest increase in profits (date and amount) over the entire period
-    #The greatest decrease in losses (date and amount) over the entire period
-
-#In addition, your final script should both print the analysis to the terminal and export a text file with the results.
+    #The net total amount of "Profit/Losses" month-by-month
+    #The average of the changes in "Profit/Losses" month-by-month
+    #The greatest increase in profits (date and amount) month-by-month
+    #The greatest decrease in losses (date and amount) month-by-month
+#Prints the analysis to the terminal and a text file in ./analysis with the results.
 
 import csv
 import os
@@ -25,7 +24,9 @@ with open(csvpath) as csvfile:
     csvreader = csv.reader(csvfile, delimiter = ",")
     csv_header = next(csvreader)
     
-    #Go through each row in the csv
+    #---------------------------------
+    #Loop through each row in the csv
+    #---------------------------------
     for row in csvreader:
         #Count the lines = same as total months
         total_months += 1
@@ -49,10 +50,14 @@ with open(csvpath) as csvfile:
             #Set the previous amount to the current row before looping
             previous_revenue = int(row[1])
 
+#---------------------------------
+#Do work outside the loop
+#---------------------------------
 #Get the sum of all of the values in our change dictionary
 change_values = change_dict.values()
 avg_change = round(sum(change_values) / len(change_dict),2)
-#Make it look like money
+
+#Convert to a currency-friendly format
 avg_change_currency = "${:,.2f}".format(avg_change)
 
 #Find max/min keys/values from the newly created dictionary (change_dict)
@@ -61,11 +66,13 @@ max_change = change_dict[max(change_dict, key=change_dict.get)]
 min_month = min(change_dict.keys(), key=(lambda k: change_dict[k]))
 min_change = change_dict[min(change_dict, key=change_dict.get)]
 
-#Convert values to a currency-friendly format
+#Convert to a currency-friendly format
 max_change_currency = "${:,.2f}".format(max_change)
 min_change_currency = "${:,.2f}".format(min_change)
 
+#---------------------------------
 #Print analysis to terminal 
+#---------------------------------
 print("Financial Analysis")
 print("----------------------------")
 print("Total Months: " + str(total_months))
@@ -74,7 +81,9 @@ print("Average Change: " + str(avg_change_currency))
 print("Greatest Increase in Profits: " + str(max_month) + " (" + str(max_change_currency) + ")")
 print("Greatest Decrease in Profits: " + str(min_month) + " (" + str(min_change_currency) + ")")
 
+#---------------------------------
 #Print analysis to terminal
+#---------------------------------
 with open("analysis/financial_analysis.txt", "w") as text_file:
     print(f"Financial Analysis", file=text_file)
     print(f"----------------------------", file=text_file)
