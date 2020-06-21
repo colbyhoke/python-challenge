@@ -1,10 +1,16 @@
-#Analyze bank records (csv) to calculate each of the following:
-    #The total number of months included in the dataset
-    #The net total amount of "Profit/Losses" month-by-month
-    #The average of the changes in "Profit/Losses" month-by-month
-    #The greatest increase in profits (date and amount) month-by-month
-    #The greatest decrease in losses (date and amount) month-by-month
-#Prints the analysis to the terminal and a text file in ./analysis with the results.
+#Colby Alexander Hoke
+#UNC Data Analytics Bootcamp, June 2020
+#CC-BY-SA
+#--------------------------------------
+#INPUT: Bank records (CSV, formatted as Date,Profit/Losses
+#RETURN:
+    #Total number of months included in the dataset
+    #Net total amount of "Profit/Losses" month-by-month
+    #Average of the changes in "Profit/Losses" month-by-month
+    #Greatest increase in profits (date and amount) month-by-month
+    #Greatest decrease in losses (date and amount) month-by-month
+#OUTPUT: Print to terminal and text file in ./analysis
+#--------------------------------------
 
 import csv
 import os
