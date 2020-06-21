@@ -60,10 +60,10 @@ avg_change = round(sum(change_values) / len(change_dict),2)
 #Convert to a currency-friendly format
 avg_change_currency = "${:,.2f}".format(avg_change)
 
-#Find max/min keys/values from the newly created dictionary (change_dict)
+#Find max/min month(key)/change(value) from the newly created dictionary (change_dict)
 max_month = max(change_dict.keys(), key=(lambda k: change_dict[k]))
-max_change = change_dict[max(change_dict, key=change_dict.get)]
 min_month = min(change_dict.keys(), key=(lambda k: change_dict[k]))
+max_change = change_dict[max(change_dict, key=change_dict.get)]
 min_change = change_dict[min(change_dict, key=change_dict.get)]
 
 #Convert to a currency-friendly format
