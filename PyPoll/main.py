@@ -21,6 +21,7 @@ candidate_list = []
 votes_list = []
 candidate_votes = {}
 winner = ""
+val_percent = float(0.000)
 
 #Open the file
 csvpath = os.path.join('Resources','election_data.csv')
@@ -62,7 +63,8 @@ print("-------------------------")
 #This prints each candidate, the percentage of votes they won, and their total individual votes
 for key, val in candidate_votes.items():
     val_percent = (val/total_votes)*100
-    print(f"{key}: {round(val_percent,3)}% ({val})")           
+    val_percent_formatted = "{0:.3f}".format(val_percent)
+    print(f"{key}: {val_percent_formatted}% ({val})")           
 print("-------------------------")
 print("Winner: " + winner)
 print("-------------------------")
@@ -77,7 +79,8 @@ with open("analysis/election_results.txt", "w") as text_file:
     print(f"-------------------------", file=text_file)
     for key, val in candidate_votes.items():
         val_percent = (val/total_votes)*100
-        print(f"{key}: {round(val_percent,3)}% ({val})", file=text_file)           
+        val_percent_formatted = "{0:.3f}".format(val_percent)
+        print(f"{key}: {val_percent_formatted}% ({val})", file=text_file)           
     print("-------------------------", file=text_file)
     print(f"Winner: {winner}", file=text_file)
     print(f"-------------------------", file=text_file)
