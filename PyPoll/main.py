@@ -66,6 +66,7 @@ for key, val in candidate_votes.items():
     val_percent_formatted = "{0:.3f}".format(val_percent)
     print(f"{key}: {val_percent_formatted}% ({val})")           
 print("-------------------------")
+#Print winner
 print("Winner: " + winner)
 print("-------------------------")
 
@@ -77,10 +78,12 @@ with open("analysis/election_results.txt", "w") as text_file:
     print(f"-------------------------", file=text_file)
     print(f"Total Votes: {total_votes}", file=text_file)
     print(f"-------------------------", file=text_file)
+    #This prints each candidate, the percentage of votes they won, and their total individual votes
     for key, val in candidate_votes.items():
         val_percent = (val/total_votes)*100
         val_percent_formatted = "{0:.3f}".format(val_percent)
         print(f"{key}: {val_percent_formatted}% ({val})", file=text_file)           
     print("-------------------------", file=text_file)
+    #Print winner
     print(f"Winner: {winner}", file=text_file)
     print(f"-------------------------", file=text_file)
